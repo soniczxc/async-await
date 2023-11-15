@@ -7,7 +7,7 @@ async def read_file(filename):
     async with aiofiles.open(filename, mode='rb') as f:
         print(filename)
         while True:
-            await asyncio.sleep(0.001)
+            #await asyncio.sleep(0.001)
             data = await f.read(1024)
             if not data:
                 print(filename, "done ###############")
