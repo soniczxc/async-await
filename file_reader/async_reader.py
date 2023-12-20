@@ -2,17 +2,15 @@ import aiofiles
 import asyncio
 import datetime
 
-
 async def read_file(filename):
     async with aiofiles.open(filename, mode='rb') as f:
         print(filename)
         while True:
-            #await asyncio.sleep(0.001)
+            await asyncio.sleep(0.001)
             data = await f.read(1024)
             if not data:
                 print(filename, "done ###############")
                 break
-
 
 async def main():
     begin = datetime.datetime.now()
@@ -22,7 +20,6 @@ async def main():
     for task in asyncio.as_completed(tasks):
         result = await task
         task_results.append(result)
-
     print(datetime.datetime.now() - begin)
 
 asyncio.run(main())
